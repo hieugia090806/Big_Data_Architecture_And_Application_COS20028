@@ -17,12 +17,13 @@ public class AvgWordLength extends Configured implements Tool {
 	public int run(String[] args) throws Exception {
 		if (args.length != 2) {
 			System.err.println("Usage: AvgWordLength <input path> <output path>");
+			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
 		// Retrieve background configurations passed implicitly by ToolRunner. //
 		Configuration conf = this.getConf();
 		// Instantiate a MapReduce Job. //
-		Job job = Job.getInstance(conf, "Average Word Length Logging Workspace");
+		Job job = Job.getInstance(conf, "Average Word Length with Logging");
 		job.setJarByClass(AvgWordLength.class);
 		
 		job.setMapperClass(LetterMapper.class);
